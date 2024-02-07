@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cities>
+	<city value="Select a city" />
+	<city value="Ayer Itam" />
+	<city value="Alor Setar" />
+	<city value="Ampang Jaya" />
+	<city value="Ayer Keroh" />
+	<city value="Batu Pahat" />
+	<city value="Bintulu" />
+	<city value="Cheras" />
+	<city value="George Town" />
+	<city value="Ipoh" />
+	<city value="Johor Bahru" />
+	<city value="Kajang" />
+	<city value="Klang" />
+	<city value="Kota Bharu" />
+	<city value="Kota Kinabalu" />
+	<city value="Kuantan" />
+	<city value="Kuching" />
+	<city value="Melaka" />
+	<city value="Miri" />
+	<city value="Petaling Jaya" />
+	<city value="Sandakan" />
+	<city value="Selayang" />
+	<city value="Seremban" />
+	<city value="Shah Alam" />
+	<city value="Subang Jaya" />
+	<city value="Sungai Petani" />
+	<city value="Taiping" />
+	<city value="Tawau" />
+	<city value="Tebrau" />
+</cities>

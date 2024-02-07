@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<states>
+	<state value="Select a state" />
+	<state value="Johor" />
+	<state value="Kedah" />
+	<state value="Kelantan" />
+	<state value="Melaka" />
+	<state value="Negeri Sembilan" />
+	<state value="Pahang" />
+	<state value="Perak" />
+	<state value="Perlis" />
+	<state value="Pulau Pinang" />
+	<state value="Sabah" />
+	<state value="Sarawak" />
+	<state value="Selangor" />
+	<state value="Terengganu" />
+	<state value="Kuala Lumpur" />
+	<state value="Labuan" />
+	<state value="Putrajaya" />
+</states>

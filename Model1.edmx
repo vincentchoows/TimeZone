@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="watchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS_ID" />
+          </Key>
+          <Property Name="ADDRESS_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="varchar" MaxLength="6" />
+          <Property Name="ADDRESS_LINE_1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS_LINE_2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="POSTCODE" Type="int" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATE" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CARD">
+          <Key>
+            <PropertyRef Name="CARD_ID" />
+          </Key>
+          <Property Name="CARD_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="varchar" MaxLength="6" />
+          <Property Name="CARD_NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GOODTHRU" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CVV" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCR" Type="varchar" MaxLength="255" />
+          <Property Name="CATEGORY_IMAGE" Type="varchar" MaxLength="255" />
+          <Property Name="BANNER_IMAGE" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GENDER" Type="char" MaxLength="1" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DATE_REGISTERED" Type="date" Nullable="false" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="DELIVERY_ID" />
+          </Key>
+          <Property Name="DELIVERY_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="SHIPPING_ADDRESS" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="EST_EARLIEST_DATE" Type="date" />
+          <Property Name="EST_LATEST_DATE" Type="date" />
+          <Property Name="ARRIVAL_DATE" Type="date" />
+          <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ROLE_ID" Type="varchar" MaxLength="6" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="POSITION" Type="varchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="PHONE" Type="varchar" MaxLength="12" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DATE_REGISTERED" Type="date" Nullable="false" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="GALLERY">
+          <Key>
+            <PropertyRef Name="GALLERY_ID" />
+          </Key>
+          <Property Name="GALLERY_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRODUCT_IMAGE" Type="varchar" MaxLength="255" />
+          <Property Name="SLIDESHOW_IMG_1" Type="varchar" MaxLength="255" />
+          <Property Name="SLIDESHOW_IMG_2" Type="varchar" MaxLength="255" />
+          <Property Name="SLIDESHOW_IMG_3" Type="varchar" MaxLength="255" />
+          <Property Name="SLIDESHOW_IMG_4" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ORDER_ITEM">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+            <PropertyRef Name="WATCH_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="WATCH_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="REVIEW_ID" Type="varchar" MaxLength="5" />
+          <Property Name="QTY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PAYMENT_ID" Type="varchar" MaxLength="5" />
+          <Property Name="DELIVERY_ID" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="AMOUNT" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="date" Nullable="false" />
+          <Property Name="PAYMENT_METHOD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="REPLY">
+          <Key>
+            <PropertyRef Name="REPLY_ID" />
+          </Key>
+          <Property Name="REPLY_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="REPLY" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="REPLY_DATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="REPLY_ID" Type="varchar" MaxLength="6" />
+          <Property Name="RATING" Type="int" Nullable="false" />
+          <Property Name="COMMENT" Type="varchar" MaxLength="255" />
+          <Property Name="REVIEW_DATE" Type="date" Nullable="false" />
+          <Property Name="STATUS" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CREATE_ACCESS" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="READ_ACCESS" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="EDIT_ACCESS" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DELETE_ACCESS" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WATCH">
+          <Key>
+            <PropertyRef Name="WATCH_ID" />
+          </Key>
+          <Property Name="WATCH_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="GALLERY_ID" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="REFERENCE_NO" Type="varchar" MaxLength="255" />
+          <Property Name="MODEL_CASE" Type="varchar" MaxLength="255" />
+          <Property Name="BEZEL" Type="varchar" MaxLength="255" />
+          <Property Name="WATER_RESISTANCE" Type="varchar" MaxLength="255" />
+          <Property Name="MOVEMENT" Type="varchar" MaxLength="255" />
+          <Property Name="CALIBRE" Type="varchar" MaxLength="255" />
+          <Property Name="POWER_RESERVE" Type="varchar" MaxLength="255" />
+          <Property Name="BRACELET" Type="varchar" MaxLength="255" />
+          <Property Name="DIAL" Type="varchar" MaxLength="255" />
+          <Property Name="CERTIFICATION" Type="varchar" MaxLength="255" />
+          <Property Name="WINDING_CROWN" Type="varchar" MaxLength="255" />
+          <Property Name="STOCK_QTY" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="STATUS" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ASUS\DOCUMENTS\DEGREE\Y2S3\BAIT2113 WEB APPLICATION DEVELOPMENT\LATEST\BACKUP\KX&ZJ(DONE)\TIMEZONE\APP_DATA\WATCH.MDF.dbo.USERROLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USERROLE">
+          <Key>
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="ROLE" />
+          </Key>
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ROLE" Type="varchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ADDRESS__CUSTOME__38996AB5">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CARD__CUSTOMER_I__3B75D760">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="CARD" Type="Self.CARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="CARD">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLOYEE__ROLE_I__412EB0B6">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__ORDER__3D2915A8">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__REVIE__3E1D39E1">
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REVIEW">
+              <PropertyRef Name="REVIEW_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="REVIEW_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__WATCH__3C34F16F">
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WATCH">
+              <PropertyRef Name="WATCH_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="WATCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__CUSTOMER__628FA481">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__DELIVERY__6477ECF3">
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERY">
+              <PropertyRef Name="DELIVERY_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="DELIVERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__PAYMENT___6383C8BA">
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPLY__EMPLOYEE___4E88ABD4">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="REPLY" Type="Self.REPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="REPLY">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__REPLY_ID__5165187F">
+          <End Role="REPLY" Type="Self.REPLY" Multiplicity="0..1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPLY">
+              <PropertyRef Name="REPLY_ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="REPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WATCH__CATEGORY___2A164134">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="WATCH">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WATCH__GALLERY_I__2B0A656D">
+          <End Role="GALLERY" Type="Self.GALLERY" Multiplicity="1" />
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GALLERY">
+              <PropertyRef Name="GALLERY_ID" />
+            </Principal>
+            <Dependent Role="WATCH">
+              <PropertyRef Name="GALLERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="watchModelStoreContainer">
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARD" EntityType="Self.CARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DELIVERY" EntityType="Self.DELIVERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GALLERY" EntityType="Self.GALLERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_ITEM" EntityType="Self.ORDER_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPLY" EntityType="Self.REPLY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REVIEW" EntityType="Self.REVIEW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WATCH" EntityType="Self.WATCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERROLE" EntityType="Self.USERROLE" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [USERROLE].[USERNAME] AS [USERNAME], 
+    [USERROLE].[PASSWORD] AS [PASSWORD], 
+    [USERROLE].[ROLE] AS [ROLE]
+    FROM [dbo].[USERROLE] AS [USERROLE]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ADDRESS__CUSTOME__38996AB5" Association="Self.FK__ADDRESS__CUSTOME__38996AB5">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CARD__CUSTOMER_I__3B75D760" Association="Self.FK__CARD__CUSTOMER_I__3B75D760">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="CARD" EntitySet="CARD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLOYEE__ROLE_I__412EB0B6" Association="Self.FK__EMPLOYEE__ROLE_I__412EB0B6">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__ORDER__3D2915A8" Association="Self.FK__ORDER_ITE__ORDER__3D2915A8">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__REVIE__3E1D39E1" Association="Self.FK__ORDER_ITE__REVIE__3E1D39E1">
+            <End Role="REVIEW" EntitySet="REVIEW" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__WATCH__3C34F16F" Association="Self.FK__ORDER_ITE__WATCH__3C34F16F">
+            <End Role="WATCH" EntitySet="WATCH" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__CUSTOMER__628FA481" Association="Self.FK__ORDERS__CUSTOMER__628FA481">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__DELIVERY__6477ECF3" Association="Self.FK__ORDERS__DELIVERY__6477ECF3">
+            <End Role="DELIVERY" EntitySet="DELIVERY" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__PAYMENT___6383C8BA" Association="Self.FK__ORDERS__PAYMENT___6383C8BA">
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPLY__EMPLOYEE___4E88ABD4" Association="Self.FK__REPLY__EMPLOYEE___4E88ABD4">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="REPLY" EntitySet="REPLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__REPLY_ID__5165187F" Association="Self.FK__REVIEW__REPLY_ID__5165187F">
+            <End Role="REPLY" EntitySet="REPLY" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WATCH__CATEGORY___2A164134" Association="Self.FK__WATCH__CATEGORY___2A164134">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="WATCH" EntitySet="WATCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WATCH__GALLERY_I__2B0A656D" Association="Self.FK__WATCH__GALLERY_I__2B0A656D">
+            <End Role="GALLERY" EntitySet="GALLERY" />
+            <End Role="WATCH" EntitySet="WATCH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="watchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS_ID" />
+          </Key>
+          <Property Name="ADDRESS_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_LINE_1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_LINE_2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSTCODE" Type="Int32" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__ADDRESS__CUSTOME__38996AB5" FromRole="ADDRESS" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="CARD">
+          <Key>
+            <PropertyRef Name="CARD_ID" />
+          </Key>
+          <Property Name="CARD_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="CARD_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GOODTHRU" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CVV" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__CARD__CUSTOMER_I__3B75D760" FromRole="CARD" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORY_IMAGE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BANNER_IMAGE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WATCHes" Relationship="Self.FK__WATCH__CATEGORY___2A164134" FromRole="CATEGORY" ToRole="WATCH" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_REGISTERED" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="ADDRESSes" Relationship="Self.FK__ADDRESS__CUSTOME__38996AB5" FromRole="CUSTOMER" ToRole="ADDRESS" />
+          <NavigationProperty Name="CARDs" Relationship="Self.FK__CARD__CUSTOMER_I__3B75D760" FromRole="CUSTOMER" ToRole="CARD" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK__ORDERS__CUSTOMER__628FA481" FromRole="CUSTOMER" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="DELIVERY_ID" />
+          </Key>
+          <Property Name="DELIVERY_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SHIPPING_ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EST_EARLIEST_DATE" Type="DateTime" Precision="0" />
+          <Property Name="EST_LATEST_DATE" Type="DateTime" Precision="0" />
+          <Property Name="ARRIVAL_DATE" Type="DateTime" Precision="0" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK__ORDERS__DELIVERY__6477ECF3" FromRole="DELIVERY" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ROLE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="POSITION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_REGISTERED" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK__EMPLOYEE__ROLE_I__412EB0B6" FromRole="EMPLOYEE" ToRole="ROLE" />
+          <NavigationProperty Name="REPLies" Relationship="Self.FK__REPLY__EMPLOYEE___4E88ABD4" FromRole="EMPLOYEE" ToRole="REPLY" />
+        </EntityType>
+        <EntityType Name="GALLERY">
+          <Key>
+            <PropertyRef Name="GALLERY_ID" />
+          </Key>
+          <Property Name="GALLERY_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT_IMAGE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SLIDESHOW_IMG_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SLIDESHOW_IMG_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SLIDESHOW_IMG_3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SLIDESHOW_IMG_4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WATCHes" Relationship="Self.FK__WATCH__GALLERY_I__2B0A656D" FromRole="GALLERY" ToRole="WATCH" />
+        </EntityType>
+        <EntityType Name="ORDER_ITEM">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+            <PropertyRef Name="WATCH_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WATCH_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REVIEW_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="QTY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDER" Relationship="Self.FK__ORDER_ITE__ORDER__3D2915A8" FromRole="ORDER_ITEM" ToRole="ORDERS" />
+          <NavigationProperty Name="REVIEW" Relationship="Self.FK__ORDER_ITE__REVIE__3E1D39E1" FromRole="ORDER_ITEM" ToRole="REVIEW" />
+          <NavigationProperty Name="WATCH" Relationship="Self.FK__ORDER_ITE__WATCH__3C34F16F" FromRole="ORDER_ITEM" ToRole="WATCH" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAYMENT_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DELIVERY_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__ORDERS__CUSTOMER__628FA481" FromRole="ORDERS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="DELIVERY" Relationship="Self.FK__ORDERS__DELIVERY__6477ECF3" FromRole="ORDERS" ToRole="DELIVERY" />
+          <NavigationProperty Name="ORDER_ITEM" Relationship="Self.FK__ORDER_ITE__ORDER__3D2915A8" FromRole="ORDERS" ToRole="ORDER_ITEM" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK__ORDERS__PAYMENT___6383C8BA" FromRole="ORDERS" ToRole="PAYMENT" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PAYMENT_METHOD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="ORDERS" Relationship="Self.FK__ORDERS__PAYMENT___6383C8BA" FromRole="PAYMENT" ToRole="ORDERS" />
+        </EntityType>
+        <EntityType Name="REPLY">
+          <Key>
+            <PropertyRef Name="REPLY_ID" />
+          </Key>
+          <Property Name="REPLY_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REPLY1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REPLY_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__REPLY__EMPLOYEE___4E88ABD4" FromRole="REPLY" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="REVIEWs" Relationship="Self.FK__REVIEW__REPLY_ID__5165187F" FromRole="REPLY" ToRole="REVIEW" />
+        </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="REVIEW_ID" />
+          </Key>
+          <Property Name="REVIEW_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REPLY_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="RATING" Type="Int32" Nullable="false" />
+          <Property Name="COMMENT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="REVIEW_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="STATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ORDER_ITEM" Relationship="Self.FK__ORDER_ITE__REVIE__3E1D39E1" FromRole="REVIEW" ToRole="ORDER_ITEM" />
+          <NavigationProperty Name="REPLY" Relationship="Self.FK__REVIEW__REPLY_ID__5165187F" FromRole="REVIEW" ToRole="REPLY" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATE_ACCESS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="READ_ACCESS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EDIT_ACCESS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DELETE_ACCESS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EMPLOYEEs" Relationship="Self.FK__EMPLOYEE__ROLE_I__412EB0B6" FromRole="ROLE" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="WATCH">
+          <Key>
+            <PropertyRef Name="WATCH_ID" />
+          </Key>
+          <Property Name="WATCH_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GALLERY_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REFERENCE_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL_CASE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BEZEL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WATER_RESISTANCE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MOVEMENT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CALIBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="POWER_RESERVE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BRACELET" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DIAL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CERTIFICATION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WINDING_CROWN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STOCK_QTY" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="STATUS" Type="Boolean" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK__WATCH__CATEGORY___2A164134" FromRole="WATCH" ToRole="CATEGORY" />
+          <NavigationProperty Name="GALLERY" Relationship="Self.FK__WATCH__GALLERY_I__2B0A656D" FromRole="WATCH" ToRole="GALLERY" />
+          <NavigationProperty Name="ORDER_ITEM" Relationship="Self.FK__ORDER_ITE__WATCH__3C34F16F" FromRole="WATCH" ToRole="ORDER_ITEM" />
+        </EntityType>
+        <EntityType Name="USERROLE">
+          <Key>
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="ROLE" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ROLE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ADDRESS__CUSTOME__38996AB5">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CARD__CUSTOMER_I__3B75D760">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="CARD" Type="Self.CARD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="CARD">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WATCH__CATEGORY___2A164134">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="WATCH">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__CUSTOMER__628FA481">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__DELIVERY__6477ECF3">
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DELIVERY">
+              <PropertyRef Name="DELIVERY_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="DELIVERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EMPLOYEE__ROLE_I__412EB0B6">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REPLY__EMPLOYEE___4E88ABD4">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="REPLY" Type="Self.REPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Principal>
+            <Dependent Role="REPLY">
+              <PropertyRef Name="EMPLOYEE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WATCH__GALLERY_I__2B0A656D">
+          <End Role="GALLERY" Type="Self.GALLERY" Multiplicity="1" />
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GALLERY">
+              <PropertyRef Name="GALLERY_ID" />
+            </Principal>
+            <Dependent Role="WATCH">
+              <PropertyRef Name="GALLERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__ORDER__3D2915A8">
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__REVIE__3E1D39E1">
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="0..1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REVIEW">
+              <PropertyRef Name="REVIEW_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="REVIEW_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDER_ITE__WATCH__3C34F16F">
+          <End Role="WATCH" Type="Self.WATCH" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WATCH">
+              <PropertyRef Name="WATCH_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="WATCH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ORDERS__PAYMENT___6383C8BA">
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="0..1" />
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAYMENT">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Principal>
+            <Dependent Role="ORDERS">
+              <PropertyRef Name="PAYMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__REPLY_ID__5165187F">
+          <End Role="REPLY" Type="Self.REPLY" Multiplicity="0..1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPLY">
+              <PropertyRef Name="REPLY_ID" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="REPLY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="watchEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADDRESSes" EntityType="Self.ADDRESS" />
+          <EntitySet Name="CARDs" EntityType="Self.CARD" />
+          <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="DELIVERies" EntityType="Self.DELIVERY" />
+          <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="GALLERies" EntityType="Self.GALLERY" />
+          <EntitySet Name="ORDER_ITEM" EntityType="Self.ORDER_ITEM" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
+          <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
+          <EntitySet Name="REPLies" EntityType="Self.REPLY" />
+          <EntitySet Name="REVIEWs" EntityType="Self.REVIEW" />
+          <EntitySet Name="ROLEs" EntityType="Self.ROLE" />
+          <EntitySet Name="WATCHes" EntityType="Self.WATCH" />
+          <EntitySet Name="USERROLEs" EntityType="Self.USERROLE" />
+          <AssociationSet Name="FK__ADDRESS__CUSTOME__38996AB5" Association="Self.FK__ADDRESS__CUSTOME__38996AB5">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="ADDRESS" EntitySet="ADDRESSes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CARD__CUSTOMER_I__3B75D760" Association="Self.FK__CARD__CUSTOMER_I__3B75D760">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="CARD" EntitySet="CARDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WATCH__CATEGORY___2A164134" Association="Self.FK__WATCH__CATEGORY___2A164134">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="WATCH" EntitySet="WATCHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__CUSTOMER__628FA481" Association="Self.FK__ORDERS__CUSTOMER__628FA481">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__DELIVERY__6477ECF3" Association="Self.FK__ORDERS__DELIVERY__6477ECF3">
+            <End Role="DELIVERY" EntitySet="DELIVERies" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLOYEE__ROLE_I__412EB0B6" Association="Self.FK__EMPLOYEE__ROLE_I__412EB0B6">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REPLY__EMPLOYEE___4E88ABD4" Association="Self.FK__REPLY__EMPLOYEE___4E88ABD4">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="REPLY" EntitySet="REPLies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WATCH__GALLERY_I__2B0A656D" Association="Self.FK__WATCH__GALLERY_I__2B0A656D">
+            <End Role="GALLERY" EntitySet="GALLERies" />
+            <End Role="WATCH" EntitySet="WATCHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__ORDER__3D2915A8" Association="Self.FK__ORDER_ITE__ORDER__3D2915A8">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__REVIE__3E1D39E1" Association="Self.FK__ORDER_ITE__REVIE__3E1D39E1">
+            <End Role="REVIEW" EntitySet="REVIEWs" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDER_ITE__WATCH__3C34F16F" Association="Self.FK__ORDER_ITE__WATCH__3C34F16F">
+            <End Role="WATCH" EntitySet="WATCHes" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ORDERS__PAYMENT___6383C8BA" Association="Self.FK__ORDERS__PAYMENT___6383C8BA">
+            <End Role="PAYMENT" EntitySet="PAYMENTs" />
+            <End Role="ORDERS" EntitySet="ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__REPLY_ID__5165187F" Association="Self.FK__REVIEW__REPLY_ID__5165187F">
+            <End Role="REPLY" EntitySet="REPLies" />
+            <End Role="REVIEW" EntitySet="REVIEWs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="watchModelStoreContainer" CdmEntityContainer="watchEntities2">
+          <EntitySetMapping Name="ADDRESSes">
+            <EntityTypeMapping TypeName="watchModel.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="ADDRESS_LINE_1" ColumnName="ADDRESS_LINE_1" />
+                <ScalarProperty Name="ADDRESS_LINE_2" ColumnName="ADDRESS_LINE_2" />
+                <ScalarProperty Name="POSTCODE" ColumnName="POSTCODE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARDs">
+            <EntityTypeMapping TypeName="watchModel.CARD">
+              <MappingFragment StoreEntitySet="CARD">
+                <ScalarProperty Name="CARD_ID" ColumnName="CARD_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="CARD_NUMBER" ColumnName="CARD_NUMBER" />
+                <ScalarProperty Name="GOODTHRU" ColumnName="GOODTHRU" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORies">
+            <EntityTypeMapping TypeName="watchModel.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCR" ColumnName="DESCR" />
+                <ScalarProperty Name="CATEGORY_IMAGE" ColumnName="CATEGORY_IMAGE" />
+                <ScalarProperty Name="BANNER_IMAGE" ColumnName="BANNER_IMAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="watchModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="DATE_REGISTERED" ColumnName="DATE_REGISTERED" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DELIVERies">
+            <EntityTypeMapping TypeName="watchModel.DELIVERY">
+              <MappingFragment StoreEntitySet="DELIVERY">
+                <ScalarProperty Name="DELIVERY_ID" ColumnName="DELIVERY_ID" />
+                <ScalarProperty Name="SHIPPING_ADDRESS" ColumnName="SHIPPING_ADDRESS" />
+                <ScalarProperty Name="EST_EARLIEST_DATE" ColumnName="EST_EARLIEST_DATE" />
+                <ScalarProperty Name="EST_LATEST_DATE" ColumnName="EST_LATEST_DATE" />
+                <ScalarProperty Name="ARRIVAL_DATE" ColumnName="ARRIVAL_DATE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="watchModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="DATE_REGISTERED" ColumnName="DATE_REGISTERED" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GALLERies">
+            <EntityTypeMapping TypeName="watchModel.GALLERY">
+              <MappingFragment StoreEntitySet="GALLERY">
+                <ScalarProperty Name="GALLERY_ID" ColumnName="GALLERY_ID" />
+                <ScalarProperty Name="PRODUCT_IMAGE" ColumnName="PRODUCT_IMAGE" />
+                <ScalarProperty Name="SLIDESHOW_IMG_1" ColumnName="SLIDESHOW_IMG_1" />
+                <ScalarProperty Name="SLIDESHOW_IMG_2" ColumnName="SLIDESHOW_IMG_2" />
+                <ScalarProperty Name="SLIDESHOW_IMG_3" ColumnName="SLIDESHOW_IMG_3" />
+                <ScalarProperty Name="SLIDESHOW_IMG_4" ColumnName="SLIDESHOW_IMG_4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_ITEM">
+            <EntityTypeMapping TypeName="watchModel.ORDER_ITEM">
+              <MappingFragment StoreEntitySet="ORDER_ITEM">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="WATCH_ID" ColumnName="WATCH_ID" />
+                <ScalarProperty Name="REVIEW_ID" ColumnName="REVIEW_ID" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="watchModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="DELIVERY_ID" ColumnName="DELIVERY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENTs">
+            <EntityTypeMapping TypeName="watchModel.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="PAYMENT_METHOD" ColumnName="PAYMENT_METHOD" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPLies">
+            <EntityTypeMapping TypeName="watchModel.REPLY">
+              <MappingFragment StoreEntitySet="REPLY">
+                <ScalarProperty Name="REPLY_ID" ColumnName="REPLY_ID" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="REPLY1" ColumnName="REPLY" />
+                <ScalarProperty Name="REPLY_DATE" ColumnName="REPLY_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REVIEWs">
+            <EntityTypeMapping TypeName="watchModel.REVIEW">
+              <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="REVIEW_ID" ColumnName="REVIEW_ID" />
+                <ScalarProperty Name="REPLY_ID" ColumnName="REPLY_ID" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="REVIEW_DATE" ColumnName="REVIEW_DATE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEs">
+            <EntityTypeMapping TypeName="watchModel.ROLE">
+              <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="CREATE_ACCESS" ColumnName="CREATE_ACCESS" />
+                <ScalarProperty Name="READ_ACCESS" ColumnName="READ_ACCESS" />
+                <ScalarProperty Name="EDIT_ACCESS" ColumnName="EDIT_ACCESS" />
+                <ScalarProperty Name="DELETE_ACCESS" ColumnName="DELETE_ACCESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WATCHes">
+            <EntityTypeMapping TypeName="watchModel.WATCH">
+              <MappingFragment StoreEntitySet="WATCH">
+                <ScalarProperty Name="WATCH_ID" ColumnName="WATCH_ID" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="GALLERY_ID" ColumnName="GALLERY_ID" />
+                <ScalarProperty Name="REFERENCE_NO" ColumnName="REFERENCE_NO" />
+                <ScalarProperty Name="MODEL_CASE" ColumnName="MODEL_CASE" />
+                <ScalarProperty Name="BEZEL" ColumnName="BEZEL" />
+                <ScalarProperty Name="WATER_RESISTANCE" ColumnName="WATER_RESISTANCE" />
+                <ScalarProperty Name="MOVEMENT" ColumnName="MOVEMENT" />
+                <ScalarProperty Name="CALIBRE" ColumnName="CALIBRE" />
+                <ScalarProperty Name="POWER_RESERVE" ColumnName="POWER_RESERVE" />
+                <ScalarProperty Name="BRACELET" ColumnName="BRACELET" />
+                <ScalarProperty Name="DIAL" ColumnName="DIAL" />
+                <ScalarProperty Name="CERTIFICATION" ColumnName="CERTIFICATION" />
+                <ScalarProperty Name="WINDING_CROWN" ColumnName="WINDING_CROWN" />
+                <ScalarProperty Name="STOCK_QTY" ColumnName="STOCK_QTY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERROLEs">
+            <EntityTypeMapping TypeName="watchModel.USERROLE">
+              <MappingFragment StoreEntitySet="USERROLE">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

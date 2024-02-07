@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="front-end/home.aspx" title="Home" >
+		<siteMapNode url="front-end/shop.aspx" title="Shop"/>
+
+		<siteMapNode url="front-end/cart.aspx" title="Cart"/>
+
+		<siteMapNode url="front-end/profile.aspx" title="Profile"/>
+
+		<siteMapNode url="front-end/user-login.aspx" title="Login"/>
+
+		<siteMapNode url="front-end/logout.aspx" title="Logout" />
+
+		<siteMapNode url="front-end/staff-login.aspx" title="Staff Login"/>
+	</siteMapNode>
+</siteMap>

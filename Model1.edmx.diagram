@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf36d879636443b39c3ad60cdf64ac17" Name="Diagram1">
+        <EntityTypeShape EntityType="watchModel.ADDRESS" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.CARD" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.CATEGORY" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.DELIVERY" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.EMPLOYEE" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.GALLERY" Width="1.5" PointX="3.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.ORDER_ITEM" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.ORDER" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.PAYMENT" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.REPLY" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.REVIEW" Width="1.5" PointX="6" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.ROLE" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.WATCH" Width="1.5" PointX="6" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="watchModel.USERROLE" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="watchModel.FK__ADDRESS__CUSTOME__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__CARD__CUSTOMER_I__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__WATCH__CATEGORY___2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDERS__CUSTOMER__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDERS__DELIVERY__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__EMPLOYEE__ROLE_I__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__REPLY__EMPLOYEE___4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__WATCH__GALLERY_I__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDER_ITE__ORDER__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDER_ITE__REVIE__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDER_ITE__WATCH__3C34F16F" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__ORDERS__PAYMENT___6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="watchModel.FK__REVIEW__REPLY_ID__5165187F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

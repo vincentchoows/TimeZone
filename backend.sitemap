@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+
+	<siteMapNode url="back_end/BackEndHomePage.aspx" title="Dashboard">
+
+		<siteMapNode url="" title="Record">
+			<siteMapNode url="~/back_end/record/customer/CustomerRecord.aspx" title="Customer" />
+			<siteMapNode url="~/back_end/record/staff/StaffRecord.aspx" title="Staff" />
+			<siteMapNode url="~/back_end/record/product/ProductRecord.aspx" title="Product" />
+			<siteMapNode url="~/back_end/record/sales/SalesRecord.aspx" title="Sales" />
+			<siteMapNode url="~/back_end/record/delivery/DeliveryRecord.aspx" title="Delivery" />
+			<siteMapNode url="~/back_end/record/review/ReviewRecord.aspx" title="Review" />
+		</siteMapNode>
+
+		<siteMapNode url="" title="Report">
+			<siteMapNode url="" title="Sales Report" />
+			<siteMapNode url="" title="Rating Report" />
+			<siteMapNode url="" title="Hot Selling Report" />
+			<siteMapNode url="" title="Customer Demography Report" />
+		</siteMapNode>
+
+	</siteMapNode>
+</siteMap>
