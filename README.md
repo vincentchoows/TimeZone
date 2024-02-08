@@ -65,7 +65,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
-* [![dotNETFramework][https://dotnet.microsoft.com/][dotNETFramework-url]
+* [![.NETFramework][.NETFramework.com][.NETFramework-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,7 +111,8 @@ Project Link: [https://github.com/vincentchoows/TimeZone](https://github.com/vin
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
 
-[dotNETFramework]: https://img.shields.io/badge/.NET%20Framework-512BD4?style=for-the-badge&logo=.net&logoColor=white
-[dotNETFramework-url]: https://dotnet.microsoft.com/ 
+[.NETFramework.com]: https://img.shields.io/badge/.NET%20Framework-512BD4?style=for-the-badge&logo=.net&logoColor=white
+[.NETFramework-url]: https://dotnet.microsoft.com/ 
+
 
 
