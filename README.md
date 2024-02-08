@@ -63,9 +63,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 --> 
 
-* [![Bootstrap][Bootstrap.com]] [Bootstrap-url]
-* [![JQuery][JQuery.com]] [JQuery-url]
-* [![.NETFramework][.NETFramework.com]] [.NETFramework-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
+* [![.NETFramework][.NETFramework.com]][.NETFramework-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
