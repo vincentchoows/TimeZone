@@ -39,20 +39,18 @@
 <!--Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`-->
 
 1. Account Management Module (Staff)
-PIC: Yew Zhe Jian
-Login & Logout (normal/admin/super admin staff)
-View and update profile (normal staff)
-Create new staff, view and update (admin staff)
-Full access on staff account management (super admin)
-Searching and filtering
+* Login & Logout (normal/admin/super admin staff)
+* View and update profile (normal staff)
+* Create new staff, view and update (admin staff)
+* Full access on staff account management (super admin)
+* Searching and filtering
 
-2. Account Management Module (Customer)
-PIC: Vincent Choo Wei Sern
-Add user account (admin)
-View user account (admin/customer)
-Update user account (admin/customer)
-Delete user account (admin)
-Searching, filtering 
+3. Account Management Module (Customer)
+* Add user account (admin)
+* View user account (admin/customer)
+* Update user account (admin/customer)
+* Delete user account (admin)
+* Searching, filtering 
 
 
 
