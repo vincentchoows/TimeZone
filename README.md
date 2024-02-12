@@ -34,7 +34,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+![Product Name Screen Shot][product-screenshot]
 
 <!--Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`-->
 
@@ -45,15 +45,65 @@
 * Full access on staff account management (super admin)
 * Searching and filtering
 
-3. Account Management Module (Customer)
+
+2. Account Management Module (Customer)
 * Add user account (admin)
 * View user account (admin/customer)
 * Update user account (admin/customer)
 * Delete user account (admin)
-* Searching, filtering 
+* Searching, filtering
 
 
+3. Security Module
+* Login and Logout 
+* Password Hashing/ Encryption  
+* Password Recovery
+* Webpage User Authentication
 
+4. Product (Watch) Management Module
+* Create Product (admin)
+* Update Product (admin)
+* Delete Product (admin)
+* Retrieve Product
+* Searching and filtering
+
+5. Product Review Module
+* Create Review
+* Read Product Review
+* Update Review
+* Delete Review
+* Add Reply (admin)
+* Edit Reply (admin)
+* Delete Reply (admin)
+* Hide Inappropriate Customer Review (admin)
+* Notify user when review was replied (gmail)
+* Filtering
+
+6. Order Module
+* Add order (customer/admin)
+* View order (customer/admin)
+* Update order (admin)
+* Delete order (admin)
+
+7. Payment Module
+* Add payment (customer/admin)
+* Generate e-receipt (customer)
+* View payment record (admin)
+* Update payment (admin)
+* Delete payment (admin)
+* Paypal payment (customer)
+
+8. Delivery Module
+* View delivery
+* Update delivery status
+* Searching and filtering
+* Whatsapp API (message user for delivery status update)
+
+9. Data Report Module
+* Rating Report
+* Sales Report
+* Hot Selling Report
+* Customer Demography Report
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
