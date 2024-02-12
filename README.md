@@ -4,9 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/vincentchoows/TimeZone">
-<!--     <img src="logo/logo.png" alt="Logo" width="80" height="80"> -->
   <img src="logo/logo.png" alt="Logo" style="background-color: white;">
-
   </a>
 <h3 align="center">TimeZone</h3>
 
@@ -33,21 +31,32 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!--
+[![Product Name Screen Shot][product-screenshot]]
 
-	Note: 
-	1. talk about the functions and modules 
+<!--Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`-->
 
---> 
+1. Account Management Module (Staff)
+PIC: Yew Zhe Jian
+Login & Logout (normal/admin/super admin staff)
+View and update profile (normal staff)
+Create new staff, view and update (admin staff)
+Full access on staff account management (super admin)
+Searching and filtering
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+2. Account Management Module (Customer)
+PIC: Vincent Choo Wei Sern
+Add user account (admin)
+View user account (admin/customer)
+Update user account (admin/customer)
+Delete user account (admin)
+Searching, filtering 
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
